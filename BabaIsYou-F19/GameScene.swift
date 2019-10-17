@@ -12,7 +12,7 @@ import GameplayKit
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var baba:SKSpriteNode!
-    let SPEED: CGFloat = 15
+    let SPEED: CGFloat = 25
     
 
     override func didMove(to view: SKView) {
