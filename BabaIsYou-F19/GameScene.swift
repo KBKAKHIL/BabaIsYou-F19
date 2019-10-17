@@ -40,6 +40,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 // ----------------------------------------------
                let nodeTouched = atPoint(location).name
         print("Player touched: \(String(describing: nodeTouched))")
+        
+        // GAME LOGIC: Move player based on touch
+        if (nodeTouched == "up") {
+            // move up
+            self.baba.position.y = self.baba.position.y + SPEED
+        }
+        else if (nodeTouched == "down") {
+            // move down
+            self.baba.position.y = self.baba.position.y - SPEED
+        }
+        else if (nodeTouched == "right") {
+            // move right
+            self.baba.position.x = self.baba.position.x + SPEED
+        }
+        else if (nodeTouched == "left") {
+            // move left
+            self.baba.position.x = self.baba.position.x - SPEED
+        }
+       
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
