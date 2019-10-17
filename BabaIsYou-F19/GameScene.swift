@@ -22,7 +22,33 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
    
     func didBegin(_ contact: SKPhysicsContact) {
-        print("Something collided!")
+//        print("Something collided!")
+        
+        let node1 = contact.bodyA.node
+        let node2 = contact.bodyB.node
+        
+        if (node1 == nil || node2 == nil) {
+            return
+        }
+        print("COLLISION DETECTED")
+        print("Sprite 1: \(node1!.name)")
+        print("Sprite 2: \(node2!.name)")
+        print("------")
+        if (node1!.name == "flagblock" && node2!.name == "baba") {
+            print("YOU WIN")
+        }
+        if (node1!.name == "baba" && node2!.name == "flagblock") {
+            print("YOU WIN")
+        
+            if let scene = SKScene(fileNamed: "win scene") {
+            scene.scaleMode = .aspectFill
+            // OPTION 1: Change screens with an animation
+            self.view?.presentScene(scene, transition: SKTransition.flipVertical(withDuration: 2.5))
+            // OPTION 2: Change screens with no animation
+            //self.view?.presentScene(scene)
+            }
+        }
+        
     }
     
     override func update(_ currentTime: TimeInterval) {
